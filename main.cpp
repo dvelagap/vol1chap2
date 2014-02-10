@@ -33,13 +33,20 @@ int main(void)
     headPtr->print(headPtr);
 #endif
 
-#if 0
+#if 1
     dll_node dll_node(99);
     auto dllHeadPtr = dll_node.insert(nullptr, 20);
-    dllHeadPtr->insert(dllHeadPtr,15);
-    dllHeadPtr->insert(dllHeadPtr,55);
-    auto findNode = dllHeadPtr->find(dllHeadPtr,55);
-    dllHeadPtr = dllHeadPtr->remove(dllHeadPtr,findNode);
+    dllHeadPtr= dllHeadPtr->insert(dllHeadPtr,15);
+    dllHeadPtr= dllHeadPtr->insert(dllHeadPtr,30);
+     dllHeadPtr= dllHeadPtr->insert(dllHeadPtr,33);
+    dllHeadPtr= dllHeadPtr->insert(dllHeadPtr,15);
+    dllHeadPtr= dllHeadPtr->insert(dllHeadPtr,20);
+   // auto findNode = dllHeadPtr->find(dllHeadPtr,55);
+    dllHeadPtr->print(dllHeadPtr);
+   // dllHeadPtr = dllHeadPtr->reverse(dllHeadPtr);
+    //dllHeadPtr = dllHeadPtr->remove(dllHeadPtr,findNode);
+    cout << (dllHeadPtr->is_palindrome(dllHeadPtr)? "is a palindrome " : "not a palindrome ") << endl;
+
     dllHeadPtr->print(dllHeadPtr);
 #endif
 
@@ -58,7 +65,7 @@ int main(void)
 #endif
     //modifications
 
-
+#if 0
     auto headPtr = dummyNode.insert(nullptr,7);
     headPtr = headPtr->insert(headPtr,7);
     headPtr = headPtr->insert(headPtr,6);
@@ -67,6 +74,8 @@ int main(void)
     headPtr = headPtr->insert(headPtr,5);
     headPtr = headPtr->insert(headPtr,7);
     headPtr->print(headPtr);
-    headPtr = headPtr->remove_values(headPtr, 7);
+    //headPtr = headPtr->remove_values(headPtr, 7);
+    headPtr = headPtr->reverse(headPtr);
     headPtr->print(headPtr);
+#endif
 }

@@ -13,10 +13,18 @@ struct node{
     node* mid(node* head);
     node* findKth(node* head, size_t k);
     node* remove_values(node* head, int value);
+    node* reverse(node *head);
+    bool  equals(node* x, node* y);
     //circular linked list functions
     node* circular_insert(node* head, int value);
     node* circular_find(node* head, int value);
     node* circular_remove(node* head, node* target);
+
+    //TODO
+    //bool is_plaindrome(node* head);
+    //bool detect_loop(node* head);
+    //node* merge(node* h1, node* h2);
+
     void print(node*);
 };
 
@@ -29,6 +37,8 @@ struct dll_node{
     dll_node* insert(dll_node*, int);
     dll_node* find(dll_node* head, int value);
     dll_node* remove(dll_node*, dll_node*);
+    dll_node* reverse(dll_node* head);
+    bool is_palindrome(dll_node* head);
     void print(dll_node*);
 };
 

@@ -166,6 +166,33 @@ node* node::remove(node* head, node*target)
      return head;
  }
 
+ node* node::reverse(node *head)
+ {
+     node* prev = nullptr;
+     while(head != nullptr)
+     {
+         auto temp = head->next;
+         head->next = prev;
+         prev = head;
+         head = temp;
+     }
+     return prev;
+ }
+
+ bool node::equals(node* x, node* y)
+ {
+     while(x != nullptr && y == nullptr)
+     {
+         if (x->data != y->data) return false;
+         x = x->next;
+         y = y->next;
+     }
+
+     if(x == nullptr && y == nullptr)
+         return true;
+     return false;
+ }
+
 void node::print(node* head)
 {
 
@@ -221,14 +248,62 @@ dll_node* dll_node::remove(dll_node* head, dll_node* target)
     return head;
 }
 
+dll_node* dll_node::reverse(dll_node* head)
+{
+    if (head == nullptr)
+        return nullptr;
+
+    if (head->next == head->prev)
+        return head;
+
+    auto tail = head; // 20 15 23 45 55
+    do
+    {
+        auto temp = tail->next;
+        tail->next = tail->prev;
+        tail->prev = temp;
+        tail = temp;
+    }while (tail != head);
+
+    return tail->next;
+    //return head->prev; -- doesn't work investigate
+
+
+}
+
+bool dll_node::is_palindrome(dll_node* head)
+{
+    if (head == nullptr)
+        return false;
+    if (head == head->next)
+        return true;
+
+    auto tail = head->prev;
+
+    //auto current = head;
+   // while(current->next != head)
+    do
+    {
+        if(head->data != tail->data)
+            return false;
+        head = head->next;
+        tail = tail->prev;
+    }while(head != tail && head->prev != tail);
+
+    return true;
+}
+
 void dll_node::print(dll_node* head)
 {
     auto current = head;
     while(current != nullptr)
     {
-        cout << current->data << " " << endl;
+        cout << current->data << " ";
         if (current->next == head)
+        {
+            cout << endl;
             return;
+        }
         current = current->next;
     }
 }
